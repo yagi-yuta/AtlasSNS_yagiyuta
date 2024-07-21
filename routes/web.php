@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,25 +17,23 @@
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
+Auth::routes();
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/added', 'Auth\RegisterController@added');
-Route::post('/added', 'Auth\RegisterController@added');
-
+Route::get('/added', 'Auth\RegisterController@added')->name('added');
 //ログイン中のページ
-Route::get('/top','PostsController@index');
-
-Route::get('/profile','UsersController@profile');
-
-Route::get('/search','UsersController@index');
-
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+//0715ミドルウェア追記
+Route::middleware(['auth'])->group(function () {
+  Route::get('/top', 'PostsController@index')->name('top');
+  Route::get('/profile', 'UsersController@profile')->name('profile');
+  Route::get('/search', 'UsersController@search')->name('search');
+  Route::get('/follow-list', 'FollowsController@followList')->name('follow-list');
+  Route::get('/follower-list', 'FollowsController@followerList')->name('follower-list');
+});

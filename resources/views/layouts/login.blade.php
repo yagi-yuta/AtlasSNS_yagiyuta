@@ -19,15 +19,24 @@
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
 </head>
+
 <body>
     <header>
-        <div id="head">
-            <h1><a href="/top"><img src="/images/atlas.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/icon1.png"></p>
+        <div id="header">
+            <div id="row-content">
+                <div class="header-logo">
+                    <h1><a href="/top"><img src="/images/atlas.png"></a></h1>
+                </div>
+
+
+                <div id="header-menu">
+                    <div class="header-profile">
+                        <p>{{$username}}　さん</p>
+                    </div>
+
+
                     <div class="accordion-menu">
-                        <button class="accordion-btn" onclick="toggleAccordion(this)">メニュー</button>
+                        <button class="accordion-btn" onclick="toggleAccordion(this)"><span class="arrow-down"></span></button>
                         <div class="accordion-content">
                             <ul>
                                 <li><a href="/top">ホーム</a></li>
@@ -36,42 +45,61 @@
                             </ul>
                         </div>
                     </div>
+
+                    <img class="user-icon" src="{{asset('storage/images/' . ($images ?: 'icon1.png'))}}">
                 </div>
+
+            </div>
+        </div>
     </header>
-    <div id="row">
 
-    <!--投稿フォーム-->
-        <div id="container">
+    <div id="main-content">
+
+        <div id="post-wrapper">
             @yield('content')
-            <form action="/top/post" method="post"> @csrf
-            <input type="text" name="post"placeholder="投稿内容を入力してください。" required>
-            <button type="submit" class="">投稿</button>
-            </form>
-            </div>
         </div>
 
-        <div id="side-bar">
-            <div id="confirm">
-                <p>〇〇さんの</p>
-                <div>
-                    <!--フォローリスト-->
-                    <p>フォロー数</p>
-                    <p>〇〇名</p>
+        <div class="side-bar-wrapper">
+
+            <div id="side-bar">
+                <div id="side-follows">
+                    <p>{{$username}}さんの</p>
+
+                    <div class="side-bar-followsCount">
+                        <div>
+                            <!--フォローリスト-->
+                            <p>フォロー数 {{$followCount}}人</p>
+                        </div>
+                        <div class="follows-list-btn">
+                            <p class="btn"><a href="/follow-list">フォローリスト</a></p>
+                        </div>
+                    </div>
+
+                    <div class="side-bar-followsCount">
+                        <div>
+                            <!--フォロワーリスト-->
+                            <p>フォロワー数{{$followerCount}}人</p>
+                        </div>
+                        <div class="follows-list-btn">
+                            <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                        </div>
+                    </div>
+
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
-                <!--フォロワーリスト-->
-                    <p>フォロワー数</p>
-                    <p>〇〇名</p>
+                <div class="side-bar-search-btn">
+                    <p class="btn"><a href="/search">ユーザー検索</a></p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+
         </div>
+
+
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="{{ asset('js/app.js')}}"></script>
+    <script src="{{ asset('js/script.js')}}"></script>
+    <script src="{{ asset('js/edit-modal.js')}}"></script>
 </body>
 </html>

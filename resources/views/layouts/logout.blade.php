@@ -20,8 +20,9 @@
   <!--OGPタグ/twitterカード-->
 </head>
 <body>
-  <header>
-    <h1><img src="images/atlas.png"></h1>
+  <header class="logout-header">
+
+    <h1 class="logout-logo"><img src="images/atlas.png"></h1>
     <p class="logout-subheader-text">Social Network Service</p>
   </header>
   <div id="container">

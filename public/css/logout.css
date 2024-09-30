@@ -1,12 +1,22 @@
 @charset "UTF-8";
 
+
+
 html {
     height: 100%;
 }
 
 body {
     height: 100%;
+
+}
+
+html,
+body {
+    height: 100%;
+    /* htmlとbodyの高さを100%に設定 */
     background: linear-gradient(to bottom, #186AC9, #FFFF00);
+
 }
 
 header {
@@ -21,6 +31,7 @@ header {
 }
 
 .logout-subheader-text {
+    margin-top: 1px;
     font-weight: bold;
     font-size: 24px;
     color: white;
@@ -40,7 +51,7 @@ header {
 }
 
 .logout-header {
-    margin-top: 5%;
+    padding: 5%;
 }
 
 .login-form-link a {
@@ -80,8 +91,7 @@ header {
     border-radius: 8px;
 }
 
-.input-mail-form,
-.input-password-form {
+.input-form {
     text-align: left;
     margin-bottom: 30px;
 }
@@ -92,6 +102,7 @@ header {
 }
 
 .login-form-button input[type="submit"] {
+    margin-top: 30px;
     background-color: #D9363E;
     color: white;
     padding: 10px 20px;
@@ -99,4 +110,18 @@ header {
     border-radius: 5px;
     cursor: pointer;
     font-size: 25px;
+}
+
+.login-form-user-button {
+    text-align: right;
+    padding: 0 10 55 0;
+}
+
+.login-form-user-button input[type="submit"] {
+    font-size: 20px;
+    width: 100%;
+    max-width: 130px;
+    background-color: #D9363E;
+    color: white;
+    border: none;
 }

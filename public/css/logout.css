@@ -125,3 +125,38 @@ header {
     color: white;
     border: none;
 }
+
+.input-mail-form {
+    margin-bottom: 30px;
+}
+
+
+.added-bold-text {
+    font-weight: 550;
+    font-size: 20px;
+    color: white;
+    margin: 10px 50px 35px 50px;
+}
+
+.added-text {
+    font-weight: 450;
+    color: white;
+    font-size: 20px;
+}
+
+.added-button {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 20px 0;
+}
+
+.added-button a {
+    font-size: 18px;
+    width: 100%;
+    max-width: 150px;
+    background-color: #D9363E;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

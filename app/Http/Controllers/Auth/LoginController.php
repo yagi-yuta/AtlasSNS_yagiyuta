@@ -39,29 +39,37 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
-        if($request->isMethod('post')){
+    public function login(Request $request)
+    {
+        if ($request->isMethod('post')) {
 
-            $data=$request->only('mail','password');
+            $data = $request->only('mail', 'password');
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
-            if(Auth::attempt($data)){
+            if (Auth::attempt($data)) {
                 return redirect('/top');
+            } else {
+                //エラーメッセージ withErrors　セッションにエラーメッセージを保存し、次のリクエストで表示可能にするメソッド
+                return back()->withErrors([
+                    'login' => '※メールアドレスまたはパスワードに誤りがあります。',
+                ]);
             }
         }
+
         return view("auth.login");
     }
-public function logout(){
+    public function logout()
+    {
 
         Auth::logout();
         return redirect('/login');
-}
+    }
 
-public function showLoginForm()
-{
+    public function showLoginForm()
+    {
         $username = Auth::check() ? Auth::user()->name : null;
         return view('auth.login', compact('username'));
-}
+    }
 
 
 

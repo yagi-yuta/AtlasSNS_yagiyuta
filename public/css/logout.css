@@ -112,6 +112,12 @@ header {
     font-size: 25px;
 }
 
+.error {
+    color: #ed3833;
+    text-align: center;
+    font-size: 13px;
+}
+
 .login-form-user-button {
     text-align: right;
     padding: 0 10 55 0;

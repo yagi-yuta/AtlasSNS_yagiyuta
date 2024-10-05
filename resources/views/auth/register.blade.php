@@ -2,9 +2,24 @@
 
 @section('content')
 <!-- 適切なURLを入力してください -->
+
+
+
+
 {!! Form::open(['url' => '/register']) !!}
 
 <div class="login-form">
+
+  @if ($errors->any())
+    <div class="error">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{$error}}</li>
+    @endforeach
+    </ul>
+    </div>
+  @endif
+
   <div class="login-form-text">
     <h2>新規ユーザー登録</h2>
   </div>
@@ -22,12 +37,12 @@
 
     <div class="input-form">
       {{ Form::label('パスワード') }}
-      {{ Form::text('password', null, ['class' => 'input']) }}
+      {{ Form::password('password', null, ['class' => 'input']) }}
     </div>
 
     <div class="input-form">
       {{ Form::label('パスワード確認') }}
-      {{ Form::text('password_confirmation', null, ['class' => 'input']) }}
+      {{ Form::password('password_confirmation', null, ['class' => 'input']) }}
     </div>
 
     <div class="login-form-user-button">

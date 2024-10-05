@@ -46,8 +46,29 @@ class RegisterController extends Controller
             $validator = Validator::make($request->all(), [
                 'username' => 'required|min:2|max:12',
                 'mail' => 'required|email|unique:users,mail|min:5|max:40',
-                'password' => 'required|alpha_num|min:8|max:20',
-                'password_confirmation' => 'required|alpha_num|min:8|max:20|same:password',
+                'password' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:20',
+                'password_confirmation' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:20|same:password'
+            ], [
+                'username.required' => '※ユーザー名を入力してください。',
+                'username.min' => '※ユーザー名は2文字以上で入力してください。',
+                'username.max' => '※ユーザー名は12文字以内で入力してください。',
+                'mail.required' => '※メールアドレスを入力してください。',
+                'mail.email' => '※メールアドレスの形式が正しくありません。',
+                'mail.unique' => '※このメールアドレスは既に登録されています。',
+                'mail.min' => '※メールアドレスは5文字以上で入力してください。',
+                'mail.max' => '※メールアドレスは40文字以内で入力してください。',
+                'password.required' => '※パスワードを入力してください。',
+                'password.regex' => '※パスワードは英数字（半角）で入力してください。',
+                'password.min' => '※パスワードは8文字以上で入力してください。',
+                'password.max' => '※パスワードは20文字以内で入力してください。',
+                'password_confirmation.required' => '※パスワード確認を入力してください。',
+                'password_confirmation.regex' => '※パスワード確認は英数字（半角）で入力してください。',
+                'password_confirmation.min' => '※パスワード確認は8文字以上で入力してください。',
+                'password_confirmation.max' => '※パスワード確認は20文字以内で入力してください。',
+                'password_confirmation.same' => '※パスワードとパスワード確認が一致していません。',
+
+
+
             ]);
 
             //バリデーション失敗時の処理

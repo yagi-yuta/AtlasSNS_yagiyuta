@@ -3,6 +3,16 @@
 @section('content')
 
 <div class="login-form">
+
+  @if ($errors->any())
+    <div class="error">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{$error}}</li>
+    @endforeach
+    </ul>
+    </div>
+  @endif
   {!! Form::open(['url' => '/login']) !!}
 
   <div class="login-form-text">

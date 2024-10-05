@@ -49,9 +49,16 @@ header {
     height: 64px;
     object-fit: cover;
     border-radius: 5px;
+
 }
 
 .delete-button button {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.modal-update-button button {
     border: none;
     background: transparent;
     padding: 0;
@@ -160,6 +167,13 @@ header {
 #post-form-wrapper {
     border-bottom: 10px solid gray;
 
+}
+
+.error {
+    color: #ed3833;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #post-form {
@@ -290,6 +304,7 @@ header {
 }
 
 .modal-form {
+    position: relative;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 0;
@@ -304,17 +319,6 @@ header {
     /* 中央に配置 */
 }
 
-.modal-close-button {
-    display: flex;
-    /* ボタンを中央に配置するための親要素 */
-    justify-content: center;
-    /* ボタンを中央に配置 */
-    width: 100%;
-    /* ボタンの親要素を100%に */
-    box-sizing: border-box;
-    resize: vertical;
-}
-
 .modal-form input[type="text"] {
     width: 100%;
     height: 60px;
@@ -323,22 +327,83 @@ header {
     resize: vertical;
 }
 
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+
+
 .modal-update-button {
     display: flex;
     justify-content: center;
-    /* ボタンを中央に配置 */
     width: 100%;
-    /* ボタンの親要素を100%に */
     margin-top: 20px;
-    /* フォームとの間に少し余白を追加 */
+}
+
+
+.modal-close-button {
+    cursor: pointer;
+}
+
+.modal-buttons button {
+    width: 100px;
+    height: 40px;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.delete-modal {
+    align-items: flex-start;
+}
+
+.delete-modal .modal-form {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ccc;
+    max-width: 500px;
+    width: 90%;
+    padding: 0;
+    top: 0;
+}
+
+.modal-form p {
+    margin: 20px 100px 0px 30px;
+    font-size: 16px;
+}
+
+.delete-confirm {
+    background-color: #003366;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 20px 25px;
 }
 
 .modal-close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 20px 25px;
+    border-radius: 8px;
+    min-width: 155px;
+}
+
+.delete-confirm,
+.modal-close-button {
+    display: inline-flex;
+    /* インラインフレックスを使用 */
+    justify-content: center;
+    /* 水平方向に中央揃え */
+    align-items: center;
+    /* 垂直方向に中央揃え */
+    line-height: normal;
+    /* 行の高さを通常に設定 */
+    height: 50px;
+    /* 高さを固定する */
 }
 
 /*アコーディオンメニュー*/

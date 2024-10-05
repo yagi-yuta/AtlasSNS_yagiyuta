@@ -8,6 +8,17 @@
     @if (request()->is('top'))
 
 
+        @if ($errors->any())
+            <div class="error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
 
         <div id="post-form">
 
@@ -51,11 +62,10 @@
                         </div>
 
                         <div class="delete-button">
-                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"><img class="button" src="/images/trash.png" alt="削除"></button>
-                            </form>
+                            <button class="delete-modal-open" data-id="{{$post->id}}">
+                                <img class="button" src="/images/trash.png" alt="削除">
+                            </button>
+
                         </div>
                     </div>
                 @endif
@@ -67,17 +77,33 @@
         <!-- モーダル -->
         <div id="modal-{{$post->id}}" class="modal">
             <div class="modal-form">
-                <span class="modal-close-button">閉じる</span>
                 <form id="modal-edit{{$post->id}}" method="POST" action="{{route('posts.update', $post->id)}}">
                     @csrf
                     @method('POST')
                     <input type="text" name="post" value="{{ $post->post }}">
                     <div class='modal-update-button'>
-                        <button type="submit">更新</button>
+                        <button type="submit"><img class="button" src="/images/edit.png" alt="編集"></button>
                     </div>
                 </form>
             </div>
         </div>
+
+        <div id="delete-modal-{{$post->id}}" class="modal delete-modal">
+            <div class="modal-form">
+                <p>この投稿を削除します。よろしいでしょうか？</p>
+                <div class="modal-buttons">
+                    <form action="{{route('posts.destroy', $post->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-confirm">OK</button>
+                        <button type="button" class="modal-close-button">キャンセル</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
     @endforeach
 </div>
 

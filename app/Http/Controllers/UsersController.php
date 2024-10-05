@@ -62,6 +62,25 @@ class UsersController extends Controller
             'new_password_confirmation' => 'nullable|alpha_num|min:8|max:20|same:new_password',
             'bio' => 'max:150',
             'images' => 'nullable|image|mimes:jpg,png,gif,svg',
+        ], [
+            'username.required' => '※ユーザーネームは必須です。',
+            'username.min' => '※ユーザーネームは2文字以上で入力してください。',
+            'username.max' => '※ユーザーネームは12文字以内で入力してください。',
+            'mail.required' => '※メールアドレスの入力は必須です。',
+            'mail.min' => '※メールアドレスは5文字以上で入力してください。',
+            'mail.max' => '※メールアドレスは40文字以内で入力してください。',
+            'mail.email' => '※メールアドレスの形式が正しくありません。',
+            'mail.unique' => '※このメールアドレスはすでに使用されています。',
+            'new_password.min' => '※新しいパスワードは8文字以上で入力してください。',
+            'new_password.max' => '※新しいパスワードは20文字以内で入力してください。',
+            'new_password.alpha_num' => '※新しいパスワードは英数字のみで入力してください。',
+            'new_password_confirmation.required' => '※パスワード確認は必須です。',
+            'new_password_confirmation.min' => '※パスワード確認は8文字以上で入力してください。',
+            'new_password_confirmation.max' => '※パスワード確認は20文字以内で入力してください。',
+            'new_password_confirmation.same' => '※パスワードが一致しません。',
+            'bio.max' => '※自己紹介は150文字以内で入力してください。',
+            'images.image' => '※画像ファイルをアップロードしてください。',
+            'images.mimes' => '※画像はjpg、png、gif、svgの形式である必要があります。',
         ]);
         //更新
         $data = [
@@ -92,6 +111,9 @@ class UsersController extends Controller
         $images = Auth::user()->images;
         $followCount = Auth::user()->followCount;
         $followerCount = Auth::user()->followerCount;
+
+
+
 
         return redirect()->route('top');
     }

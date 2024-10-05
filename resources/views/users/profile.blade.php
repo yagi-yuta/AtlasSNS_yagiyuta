@@ -8,7 +8,7 @@
       @csrf
 
       @if ($errors->any())
-      <div class="alert alert-danger">
+      <div class="error">
       <ul>
         @foreach ($errors->all() as $error)
       <li>{{ $error }}</li>
@@ -16,6 +16,7 @@
       </ul>
       </div>
     @endif
+
 
       <div class="form-group">
         <h1>ユーザー名</h1>

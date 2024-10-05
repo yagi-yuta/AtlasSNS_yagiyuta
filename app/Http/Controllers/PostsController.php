@@ -41,6 +41,9 @@ class PostsController extends Controller
     {
         $request->validate([
             'post' => 'required|max:150',
+        ], [
+            'post.required' => '※1文字以上入力してください。',
+            'post.max' => '※150文字以内で入力してください。',
         ]);
 
         $post = new Post;
@@ -66,6 +69,10 @@ class PostsController extends Controller
     //編集画面
     public function edit($id)
     {
+
+
+
+
         $post = post::findOrFail($id);
 
         if ($post->user_id != Auth::id()) {
@@ -78,7 +85,12 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //バリデーション
-
+        $request->validate([
+            'post' => 'required|max:150',
+        ], [
+            'post.required' => '※1文字以上入力してください。',
+            'post.max' => '※150文字以内で入力してください。',
+        ]);
 
         //postの取得　
         $post = post::findOrFail($id);

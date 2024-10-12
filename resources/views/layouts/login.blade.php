@@ -46,7 +46,12 @@
                         </div>
                     </div>
 
-                    <img class="user-icon" src="{{asset('storage/images/' . ($images ?: 'icon1.png'))}}">
+                    @if ($images !== 'icon1.png')
+                        <img class="user-icon" src="{{ url('storage/images/' . $images) }}">
+                    @else
+                        <img class="user-icon" src="{{ url('images/icon1.png') }}">
+                    @endif
+
                 </div>
 
             </div>

@@ -29,10 +29,13 @@ class PostsController extends Controller
         $posts = $posts->sortByDesc('created_at');
 
         $username = Auth::user()->username;
-        $images = Auth::user()->images;
+
+        $images = Auth::user()->images ?: 'icon1.png';
+
         $bio = Auth::user()->bio;
         $followCount = Auth::user()->followCount;
         $followerCount = Auth::user()->followerCount;
+
         return view('posts.index', compact('posts', 'username', 'images', 'bio', 'followCount', 'followerCount', ));
     }
 

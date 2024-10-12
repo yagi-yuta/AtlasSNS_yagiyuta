@@ -9,7 +9,14 @@
       @foreach($followerUsers as $user)
       @if($user->id !== Auth::id())
       <a href="{{url('/users/profile', ($user->id))}}">
-      <img class="user-icon" src="{{ asset('storage/images/' . ($user->images ?: 'icon1.png')) }}" alt="{{ $user->username }}">
+
+
+      @if ($user->images && $user->images !== 'icon1.png')
+      <img class="user-icon" src="{{ asset('storage/images/' . $user->images) }}" alt="{{ $user->username }}">
+    @else
+      <img class="user-icon" src="{{ asset('images/icon1.png') }}" alt="{{ $user->username }}">
+    @endif
+
       </a>
     @endif
     @endforeach
@@ -22,8 +29,23 @@
     <div class="post-wrapper">
     @foreach ($posts as $post)
     <div class="post-box">
-      <img class="user-icon" src="{{ asset('storage/images/' . ($post->user->images ?: 'icon1.png')) }}" alt="
-      {{$post->user->username}}">
+
+      @if (Auth::user()->id === $post->user_id)
+      <!-- ログインユーザーの場合 -->
+      @if ($images !== 'icon1.png')
+      <img class="user-icon" src="storage/images/{{$images}}">
+    @else
+      <img class="user-icon" src="images/icon1.png">
+    @endif
+    @else
+      <!-- 他のユーザーの場合 -->
+      @if ($post->user->images !== 'icon1.png')
+      <img class="user-icon" src="storage/images/{{$post->user->images}}">
+    @else
+      <img class="user-icon" src="images/icon1.png">
+    @endif
+    @endif
+
 
       <div class="posts-post-area">
       <div class="posts-name-area">

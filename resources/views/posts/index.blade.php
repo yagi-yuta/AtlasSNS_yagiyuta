@@ -23,7 +23,12 @@
         <div id="post-form">
 
             <div class="post-form-icon">
-                <img class="user-icon" src="{{asset('storage/images/' . ($images ?: 'icon1.png'))}}">
+                @if ($images !== 'icon1.png')
+                    <img class="user-icon" src="storage/images/{{$images}}">
+                @else
+                    <img class="user-icon" src="{{'images/icon1.png'}}">
+                @endif
+
             </div>
 
             <form action="/post" method="post"> @csrf
@@ -42,8 +47,25 @@
 
 <div class="posts-wrapper">
     @foreach ($posts as $post)
+
         <div class="post-box">
-            <img class="user-icon" src="{{ asset('storage/images/' . ($post->user->images ?: 'icon1.png')) }}">
+
+
+            @if (Auth::user()->id === $post->user_id)
+                <!-- ログインユーザーの場合 -->
+                @if ($images !== 'icon1.png')
+                    <img class="user-icon" src="storage/images/{{$images}}">
+                @else
+                    <img class="user-icon" src="images/icon1.png">
+                @endif
+            @else
+                <!-- 他のユーザーの場合 -->
+                @if ($post->user->images !== 'icon1.png')
+                    <img class="user-icon" src="storage/images/{{$post->user->images}}">
+                @else
+                    <img class="user-icon" src="images/icon1.png">
+                @endif
+            @endif
 
             <div class="posts-post-area">
                 <div class="posts-name-area">

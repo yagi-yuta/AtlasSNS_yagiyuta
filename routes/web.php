@@ -51,8 +51,6 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/remove_follow/{id}', 'FollowsController@remove_follow')->name('remove_follow');
   Route::post('/follow/{id}', 'FollowsController@follow')->name('follow');
   //フォローリスト処理
-  Route::get('/users/profile/{id}', 'UsersController@followProfile');
-  //フォロワーリスト処理
-  Route::get('/users/profile/{id}', 'UsersController@followProfile');
+  Route::get('/users/profile/{id}', 'UsersController@followProfile')->name('user.profile');
   //ユーザープロフィール
 });

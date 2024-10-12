@@ -31,7 +31,13 @@
   @foreach ($users as $user)
     @if($user->id !== Auth::id())<!--ログインユーザーの情報をリストから省く-->
     <div class="users-box">
-    <img class=" user-icon" src="{{ asset('storage/images/' . ($user->images ?: 'icon1.png')) }}" alt="{{ $user->username }}">
+
+    @if ($user->images && $user->images !== 'icon1.png')
+    <img class="user-icon" src="{{ asset('storage/images/' . $user->images) }}" alt="{{ $user->username }}">
+  @else
+  <img class="user-icon" src="{{ asset('images/icon1.png') }}" alt="{{ $user->username }}">
+@endif
+
     <p>{{$user->username}}</p>
 
     @if (in_array($user->id, $following))

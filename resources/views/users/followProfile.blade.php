@@ -7,7 +7,11 @@
 
   <div class="users-profile-content">
     <div class="users-info-icon">
-      <img class="user-icon" src="{{ asset('storage/images/' . ($user->images ?: 'icon1.png')) }}" alt="{{ $user->username }}">
+      @if ($user->images && $user->images !== 'icon1.png')
+      <img class="user-icon" src="{{ asset('storage/images/' . $user->images) }}" alt="{{ $user->username }}">
+    @else
+      <img class="user-icon" src="{{ asset('images/icon1.png') }}" alt="{{ $user->username }}">
+    @endif
     </div>
 
 
@@ -46,25 +50,46 @@
 
 
 </div>
+
 @if ($posts && $posts->count())
 
-  <div class="post-box">
+
+  <div class="post-wrapper">
     @foreach ($posts as $post)
+    <div class="post-box">
 
-    <p><img class="user-icon"  src="{{ asset('storage/images/' . ($post->user->images ?: 'icon1.png')) }}"alt="{{$post->user->username}}"></p>
-    <div class="posts-post-area">
-    <div class="posts-name-area">
-      <p>{{ $post->user->username }}</p>
-    </div>
-    {{ $post->post }}
-    </div>
-
-    <div class="time-stamp">
-    <p>{{$post->created_at->format('y-m-d h:i')}}</p>
-    </div>
-
-  @endforeach
+    @if (Auth::user()->id === $post->user_id)
+    <!-- ログインユーザーの場合 -->
+    @if ($images !== 'icon1.png')
+    <img class="user-icon" src="{{ url('storage/images/' . $images) }}">
+  @else
+  <img class="user-icon" src="{{ url('images/icon1.png') }}">
+@endif
+  @else
+  <!-- 他のユーザーの場合 -->
+  @if ($post->user->images !== 'icon1.png')
+    <img class="user-icon" src="{{url('storage/images/' . $post->user->images) }}">
+  @else
+    <img class="user-icon" src="{{ url('images/icon1.png') }}">
   @endif
-</div>
+@endif
+
+
+    <div class="posts-post-area">
+      <div class="posts-name-area">
+      <p>{{ $post->user->username }}</p>
+      </div>
+      {{ $post->post }}
+      <div class="time-stamp">
+      <p>{{$post->created_at->format('y-m-d h:i')}}</p>
+      </div>
+    </div>
+
+    </div>
+  @endforeach
+  </div>
+@endif
+
+
 
 @endsection

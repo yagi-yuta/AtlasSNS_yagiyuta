@@ -53,7 +53,9 @@ class FollowsController extends Controller
 
         $followingUsers = user::whereIn('id', $followingId)->get(['id', 'username', 'images']);
 
-        $posts = Post::whereIn('user_id', $followingId)->get();
+        $posts = Post::whereIn('user_id', $followingId)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $username = Auth::user()->username;
         $mail = Auth::user()->mail;
@@ -72,7 +74,12 @@ class FollowsController extends Controller
 
         $followerUsers = user::whereIn('id', $followerId)->get(['id', 'username', 'images']);
 
-        $posts = Post::whereIn('user_id', $followerId)->get();
+        $posts = Post::whereIn('user_id', $followerId)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+
+
         $username = Auth::user()->username;
         $mail = Auth::user()->mail;
         $bio = Auth::user()->bio;

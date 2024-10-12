@@ -122,7 +122,7 @@ class UsersController extends Controller
     {
 
         $user = User::find($id);//http://127.0.0.1:8000/users/profile/(他ユーザーのID)　他のユーザー情報を取得するための文
-        $posts = $user->posts;
+        $posts = $user->posts()->orderBy('created_at', 'desc')->get();
         $username = Auth::user()->username;
         $mail = Auth::user()->mail;
         $bio = Auth::user()->bio;

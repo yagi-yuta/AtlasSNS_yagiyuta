@@ -71,7 +71,7 @@
                 <div class="posts-name-area">
                     <p>{{ $post->user->username }}</p>
                 </div>
-                {{ $post->post }}
+                {!! nl2br(e($post->post)) !!}
             </div>
             <div>
                 <div class="time-stamp">
@@ -102,7 +102,7 @@
                 <form id="modal-edit{{$post->id}}" method="POST" action="{{route('posts.update', $post->id)}}">
                     @csrf
                     @method('POST')
-                    <input type="text" name="post" value="{{ $post->post }}">
+                    <textarea name="post">{{$post->post}}</textarea>
                     <div class='modal-update-button'>
                         <button type="submit"><img class="button" src="/images/edit.png" alt="編集"></button>
                     </div>

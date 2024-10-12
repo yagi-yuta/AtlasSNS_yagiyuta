@@ -319,12 +319,14 @@ header {
     /* 中央に配置 */
 }
 
-.modal-form input[type="text"] {
+.modal-form textarea {
     width: 100%;
-    height: 60px;
+    height: 20vh;
+    min-height: 150px;
+    max-height: 300px;
     padding: 10px;
     box-sizing: border-box;
-    resize: vertical;
+    resize: none;
 }
 
 .modal-buttons {

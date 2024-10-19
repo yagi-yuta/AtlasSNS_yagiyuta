@@ -7,7 +7,9 @@ header {
     width: 100%;
     margin: 0 auto;
     padding: 20px 0;
-    height: 90px;
+    height: 20%;
+    max-height: 100px;
+    min-height: 80px;
 }
 
 #header-menu {
@@ -49,6 +51,7 @@ header {
     height: 64px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
 
 }
 
@@ -419,40 +422,54 @@ header {
     /*(ホーム、プロフィール、ログアウト) はページロード時には 非表示*/
     position: absolute;
     background: #f9f9f9;
-    min-width: 160px;
+    min-width: 365px;
+    min-height: 300px;
     z-index: 1;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-80%) translateY(15%);
     border: 2px solid #186AC9;
+    overflow: hidden;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .accordion-content ul {
-    padding: 0;
-    /* パディングをリセット */
-    margin: 0;
-    /* マージンをリセット */
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .accordion-content li {
-    list-style-type: none;
-    /* リストスタイルをなしに */
+    height: 100%;
+    width: 100%;
 }
 
+.accordion-content li:hover {
+    background-color: blue;
+
+}
+
+
 .accordion-content a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: black;
-    /* リンクの色 */
-    padding: 12px 16px;
-    /* リンクのパディング */
     text-decoration: none;
-    /* 下線を消す */
-    display: block;
-    /* リンクをブロックに */
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
 }
 
 .accordion-content a:hover {
-    background-color: #f1f1f1;
-    /* ホバー時の背景色 */
+    color: white;
 }
 
 .accordion-btn {
@@ -567,6 +584,8 @@ header {
     margin: 2%;
 }
 
+
+
 .search-form .search-input input[type="text"] {
     width: 300px;
     height: 40px;
@@ -580,52 +599,101 @@ header {
 .profile-edit-content {
     width: 100%;
     /* 親要素の幅を100%に設定 */
-    display: flex;
-    justify-content: center;
     align-items: flex-start;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.profile-edit-form {
-    width: 80%;
-    max-width: 800px;
-    padding: 20px;
-
+.profile-edit-content form {
+    max-width: 600px;
+    width: 100%;
 }
 
 .profile-edit-form input,
 .profile-edit-form button {
-    width: 80%;
     height: 50px;
     padding: 10px;
+
 }
 
-.profile-edit-form h1 {
-    margin-right: 10px;
+
+
+.edit-form-icon {
+    margin-right: 3%;
 }
+
+.edit-update-button {
+    background-color: #ed3833;
+    color: white;
+    border-radius: 5px;
+    width: 15vh;
+    max-width: 100px;
+    min-width: 45px;
+    display: inline-block;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.edit-update-button span {
+    font-size: 20px;
+}
+
+
+
 
 .form-group {
     display: flex;
     align-items: center;
     /* 縦方向の中央揃え */
-    margin-bottom: 20px;
+    margin-bottom: 10%;
     /* 各項目の間隔 */
+    width: 100%;
 }
 
 .form-group input {
-    width: 60%;
+    width: 90%;
     /* inputの横幅を統一 */
-    height: 40px;
-    padding: 10px;
+    height: 10%;
+    min-width: 400px;
+    min-height: 40px;
     /* 内側の余白を調整 */
     box-sizing: border-box;
     /* パディングを含めたサイズ調整 */
+    border: 1px solid gray;
+    font-size: 18px;
+    background-color: #ecebe9;
 }
+
+.file-input-container input[type="file"] {
+    border: none;
+    cursor: pointer;
+}
+
+.file-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    min-height: 90px;
+    background-color: #ecebe9;
+    border: 1px solid gray;
+}
+
+
 
 .form-group h1 {
     margin: 0;
     /* h1の余白をリセット */
     width: 30%;
     /* h1の幅を調整 */
+    font-size: 18px;
+    margin-right: 10%;
+
 }
 
 

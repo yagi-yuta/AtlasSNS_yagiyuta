@@ -42,7 +42,7 @@
       <!--未フォロー処理-->
       <form action="{{route('follow', ['id' => $user->id])}}" method="post">
       @csrf
-      <button class="follow-button">フォロー</button>
+      <button class="follow-button">フォローする</button>
       </form>
     @endif
     </div>

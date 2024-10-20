@@ -631,18 +631,27 @@ header {
     width: 15vh;
     max-width: 100px;
     min-width: 45px;
-    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: block;
     border: none;
     display: block;
-    margin: 0 auto;
     cursor: pointer;
+    text-align: center;
 }
 
 .edit-update-button span {
     font-size: 20px;
 }
 
-
+#fileSelect {
+    border: none;
+    padding: 10px 35px;
+    font-size: 22px;
+    color: grey;
+    cursor: pointer;
+    background-color: white;
+}
 
 
 .form-group {

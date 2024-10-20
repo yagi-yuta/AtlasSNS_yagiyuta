@@ -59,7 +59,8 @@
       <div class="form-group">
         <h1>アイコン画像</h1>
         <div class="file-input-container">
-          <input type="file" name="images">
+          <input type="file" id="fileElem" multiple accept="image/*" style="display:none" ; name="images">
+          <button id="fileSelect" type="button">ファイルを選択</button>
         </div>
       </div>
     </div>

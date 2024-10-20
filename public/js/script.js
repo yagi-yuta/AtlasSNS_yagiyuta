@@ -27,3 +27,22 @@ fileSelect.addEventListener("click", (e) => {
     fileElem.click();
   }
 }, false);
+
+fileElem.addEventListener("change", function () {
+  if (fileElem.files.length > 0) {
+    const files = Array.from(fileElem.files).map(file => {
+      const fileName = file.name;
+      const maxLength = 10;
+      if (fileName.length > maxLength) {
+        const extension = fileName.slice(fileName.lastIndexOf('.'));
+        const truncatedName = fileName.slice(0, maxLength - extension.length) + '...' + extension;
+        return truncatedName;
+      }
+      return fileName;
+    }).join(', ');
+
+    fileSelect.textContent = files;
+  } else {
+    fileSelect.textContent = 'ファイルを選択';
+  }
+});

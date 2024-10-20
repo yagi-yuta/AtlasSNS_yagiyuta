@@ -79,7 +79,7 @@
       <div class="posts-name-area">
       <p>{{ $post->user->username }}</p>
       </div>
-      {{ $post->post }}
+      {!! nl2br(e($post->post)) !!}
       <div class="time-stamp">
       <p>{{$post->created_at->format('y-m-d h:i')}}</p>
       </div>

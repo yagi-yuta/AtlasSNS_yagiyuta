@@ -524,6 +524,7 @@ header {
 .followers-title {
     padding: 20px 40px;
     white-space: nowrap;
+    width: 200px;
 }
 
 .followers-list .users-icon {
@@ -531,6 +532,9 @@ header {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 10px;
+    width: 100%;
+    /* 固定の横幅を設定（必要に応じて調整） */
+    max-width: 3000px;
 }
 
 .followers-title {

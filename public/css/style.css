@@ -17,6 +17,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     width: 100%;
+    margin: 0 10px 10px 0;
 }
 
 .header-logo {
@@ -415,6 +416,7 @@ header {
 .accordion-menu {
     position: relative;
     display: inline-block;
+    padding: 0 15px 0 15px;
 }
 
 .accordion-content {
@@ -426,7 +428,7 @@ header {
     min-height: 300px;
     z-index: 1;
     left: 50%;
-    transform: translateX(-80%) translateY(15%);
+    transform: translateX(-72.5%) translateY(18%);
     border: 2px solid #186AC9;
     overflow: hidden;
     padding: 0;
@@ -508,15 +510,27 @@ header {
 
 .followers-list {
     border-bottom: 10px solid gray;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    padding: 20px 40px;
+    justify-content: space-between;
+}
+
+.followers-list .followers-title {
+    margin: 0;
+}
+
+.followers-title {
+    padding: 20px 40px;
+    white-space: nowrap;
 }
 
 .followers-list .users-icon {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     justify-content: flex-start;
-    padding: 50px 15px 50px 150px;
-    max-width: 100%;
+    gap: 10px;
 }
 
 .followers-title {

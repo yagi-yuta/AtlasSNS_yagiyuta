@@ -3,8 +3,8 @@
 @section('content')
 <div>
   <div class="followers-list">
+    <h2 class="followers-title">フォローリスト</h2>
     <div class="users-icon">
-      <h2 class="followers-title">フォローリスト</h2>
       @foreach($followingUsers as $user)
       @if($user->id !== Auth::id())
       <a href="{{url('/users/profile', ($user->id))}}">

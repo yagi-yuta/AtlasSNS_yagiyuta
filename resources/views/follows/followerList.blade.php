@@ -4,8 +4,8 @@
 
 <div>
   <div class="followers-list">
+    <h2 class="followers-title">フォロワーリスト</h2>
     <div class="users-icon">
-      <h2 class="followers-title">フォロワーリスト</h2>
       @foreach($followerUsers as $user)
       @if($user->id !== Auth::id())
       <a href="{{url('/users/profile', ($user->id))}}">
